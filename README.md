@@ -1,3 +1,8 @@
+    // You can build .so file using build_for_gopax.sh
+
+    const ffi = require('ffi');
+    const ref = require('ref');
+
     const soFile = 'src/main/javascript/vendor/lbtc-whitelist-sign/libsecp256k1';
     const funcName = 'whitelist_sign';
     const funcInputs = [
