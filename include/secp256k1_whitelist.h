@@ -126,6 +126,17 @@ SECP256K1_API int secp256k1_whitelist_sign(
   const void *noncedata
 ) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4) SECP256K1_ARG_NONNULL(6) SECP256K1_ARG_NONNULL(7) SECP256K1_ARG_NONNULL(8);
 
+SECP256K1_API int whitelist_sign(
+  secp256k1_whitelist_signature *sig,
+  const secp256k1_pubkey *online_pubkeys,
+  const secp256k1_pubkey *offline_pubkeys,
+  const size_t n_keys,
+  const secp256k1_pubkey *sub_pubkey,
+  const unsigned char *online_seckey,
+  const unsigned char *summed_seckey,
+  const size_t index
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(5) SECP256K1_ARG_NONNULL(6) SECP256K1_ARG_NONNULL(7);
+
 /** Verify a whitelist signature
  * Returns 1: signature is valid
  *         0: signature is not valid

@@ -100,6 +100,11 @@ int secp256k1_whitelist_sign(const secp256k1_context* ctx, secp256k1_whitelist_s
     return ret;
 }
 
+int whitelist_sign(secp256k1_whitelist_signature *sig, const secp256k1_pubkey *online_pubkeys, const secp256k1_pubkey *offline_pubkeys, const size_t n_keys, const secp256k1_pubkey *sub_pubkey, const unsigned char *online_seckey, const unsigned char *summed_seckey, const size_t index) {
+    const secp256k1_context* ctx = secp256k1_context_create(SECP256K1_CONTEXT_SIGN | SECP256K1_CONTEXT_VERIFY);
+    return secp256k1_whitelist_sign(ctx, sig, online_pubkeys, offline_pubkeys, n_keys, sub_pubkey, online_seckey, summed_seckey, index, NULL, NULL);
+}
+
 int secp256k1_whitelist_verify(const secp256k1_context* ctx, const secp256k1_whitelist_signature *sig, const secp256k1_pubkey *online_pubkeys, const secp256k1_pubkey *offline_pubkeys, const size_t n_keys, const secp256k1_pubkey *sub_pubkey) {
     secp256k1_scalar s[MAX_KEYS];
     secp256k1_gej pubs[MAX_KEYS];
